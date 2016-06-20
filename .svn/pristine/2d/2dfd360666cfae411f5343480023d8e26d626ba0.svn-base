@@ -1,0 +1,156 @@
+package com.unirio.ppgi.xstream.main;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Teste {
+
+	public static void main(String[] args) {
+		/* atributos esperados */
+		args = new String[3];
+		args[0] = "PPGI - UNIRIO";
+		args[1] = "2013";
+		args[2] = "2015";
+		/* ./atributos */
+
+		// Map<String, String> params = Helper.obterParametrosEntrada(args);
+
+		/* teste exibe */
+		// System.out.println(params.get(Constant.PROGRAMA));
+		// System.out.println(params.get(Constant.ANO_INICIO));
+		// System.out.println(params.get(Constant.ANO_FIM));
+		/* ./teste exibe */
+
+		// Helper.lerXml("C:/Users/raffamz/Documents/_PESSOAL/tbrito/a.xml");
+		
+		/* criei o a.txt com quebra de linha */
+		// Helper.quebraLinha1("C:/Users/raffamz/Documents/_PESSOAL/tbrito/0814717344017544/curriculo.xml");
+		// Helper.limpaValorAtributo2("C:/Users/raffamz/Documents/_PESSOAL/tbrito/0814717344017544/a.txt");
+		// Helper.quebraLinhaFinal3("C:/Users/raffamz/Documents/_PESSOAL/tbrito/0814717344017544/a.txt");
+		classesDisponiveis("C:/Users/raffamz/Documents/_PESSOAL/tbrito/a.txt");
+		
+//		Helper.lerUrl("https://s3.amazonaws.com/posgraduacao/programas.xml");
+
+		// System.out.println(quantasPalavras(atributo));
+
+	}
+
+	public static void classesDisponiveis(String diretorio) {
+
+		String nome = diretorio;
+
+		try {
+			FileReader arq = new FileReader(nome);
+			BufferedReader lerArq = new BufferedReader(arq);
+
+			String linha = lerArq.readLine(); // lê a primeira linha
+			// a variável "linha" recebe o valor "null" quando o processo
+			// de repetição atingir o final do arquivo texto
+			while (linha != null) {
+				if (linha.contains("<")) {
+					System.out.println(buscaNomeClasse(linha));
+				} else {
+					System.out.println(retornaNomeAtributo(linha));
+				}
+
+				linha = lerArq.readLine(); // lê da segunda até a última linha
+
+			}
+
+			arq.close();
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo: %s.\n", e.getMessage());
+		}
+
+		System.out.println();
+	}
+
+	public static String retornaNomeAtributo(String atributo) {
+		String result = "";
+		if (atributo.contains("-")) {
+			String a = atributo.toLowerCase();
+			int qtd = quantasPalavras(a);
+			String primParte = a.substring(0, a.indexOf("-"));
+			String iniSegundaParte = a.substring(a.indexOf("-") + 1, a.indexOf("-") + 2).toUpperCase();
+			String segundaParte = a.substring(a.indexOf("-") + 2, a.length());
+
+			result = primParte + iniSegundaParte + segundaParte;
+
+			for (int i = 0; i < qtd; i++) {
+				result = arrumaNomePadrao(result);
+			}
+
+			return "private String "+result;
+		} else {
+			return "";
+		}
+
+	}
+
+	public static String arrumaNomePadrao(String atributo) {
+		String a = atributo;
+		String primParte = a.substring(a.indexOf("-") + 1, a.length());
+		a = a.replace("-" + primParte, "");
+		String opa = primParte.substring(0, 1);
+		primParte = opa.toUpperCase() + primParte.replace(opa, "");
+		a += primParte;
+		return a;
+	}
+
+	public static String retornaNomeClasse(String classe) {
+		String result = "";
+
+		if (classe.contains("-")) {
+			String a = classe.toLowerCase();
+
+			int qtd = quantasPalavras(a);
+
+			String iniPrimParte = a.substring(0, 1).toUpperCase();
+			String primParte = a.substring(1, a.indexOf("-"));
+			String iniSegundaParte = a.substring(a.indexOf("-") + 1, a.indexOf("-") + 2).toUpperCase();
+			String segundaParte = a.substring(a.indexOf("-") + 2, a.length());
+
+			result = iniPrimParte + primParte + iniSegundaParte + segundaParte;
+
+			for (int i = 0; i < qtd; i++) {
+				result = arrumaNomePadrao(result);
+			}
+
+			return  "public class "+result+" {";
+		} else {
+			return "";
+		}
+
+	}
+
+	public static String buscaNomeClasse(String classe) {
+
+		if (classe.contains("<")) {
+			String primParte = classe.substring(classe.indexOf("<"), classe.length()).replace("<", "").replace(">", "");
+
+			primParte = retornaNomeClasse(primParte);
+			// System.out.println(primParte);
+			return primParte;
+		}
+		return "";
+
+	}
+
+	public static String montaInicioClasse(String nomeClasse) {
+		String iniNomeClasse = "public class ";
+		nomeClasse = buscaNomeClasse(nomeClasse);
+		nomeClasse += " {\n";
+		// insere atributos
+		nomeClasse += "\n}";
+		iniNomeClasse = iniNomeClasse + nomeClasse;
+		System.out.println(iniNomeClasse);
+
+		return iniNomeClasse;
+	}
+
+	public static int quantasPalavras(String valor) {
+		int result = valor.split("-", -1).length - 2;
+		return result;
+	}
+}

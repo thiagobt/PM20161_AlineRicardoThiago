@@ -1,0 +1,25 @@
+package com.unirio.ppgi.xstream.service;
+
+import java.util.Map;
+
+import com.unirio.ppgi.xstream.helper.Helper;
+
+public class Service {
+
+	public static void executaLeituraGravacao(Map<String, String> params) {
+		
+		Map<String, Object> objects = Helper.obterUnMarShalXml();
+
+		gerarArquivoTxt(objects);
+
+		// Descompactador arquivador = new Descompactador();
+		// String origem = "dados/0821562324429813.zip";
+		// String destino = "dados/0821562324429813";
+		// arquivador.descompacta(origem, destino);
+
+	}
+
+	public static void gerarArquivoTxt(Map<String, Object> objects) {
+
+	}
+}

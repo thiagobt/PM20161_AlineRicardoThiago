@@ -1,0 +1,21 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("DADOS-BASICOS-DO-TRABALHO")
+public class DadosBasicosTrabalho {
+
+	@XStreamAsAttribute
+	@XStreamAlias("TITULO-DO-TRABALHO")
+	private String tituloTrabalho;
+
+	public String getTituloTrabalho() {
+		return tituloTrabalho;
+	}
+
+	public void setTituloTrabalho(String tituloTrabalho) {
+		this.tituloTrabalho = tituloTrabalho;
+	}
+
+}

@@ -1,0 +1,68 @@
+package com.unirio.ppgi.xstream.main;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.thoughtworks.xstream.XStream;
+import com.unirio.ppgi.xstream.model.Linha;
+import com.unirio.ppgi.xstream.model.Professor;
+import com.unirio.ppgi.xstream.model.Programa;
+
+public class Teste {
+	
+	public static String criarXmlContents(){
+		XStream xs = new XStream();
+		xs.processAnnotations(Programa.class);
+		Programa programa = new Programa();
+		Linha linha = new Linha();
+		List<Linha> linhas = new ArrayList<Linha>();
+		linha.setNome("Representação de Conhecimento e Raciocínio");
+		Professor professor = new Professor();
+		List<Professor> professores = new ArrayList<Professor>();
+		professor.setCodigo("1841338064901299");
+		professor.setNome("Adriana Cesário de Faria Alvim");
+		professores.add(professor);
+		linha.setProfessor(professores);
+		linhas.add(linha);
+		programa.setLinha(linhas);
+
+		return xs.toXML(programa);
+	}
+	
+	public static Programa lerXmlContent(String diretorio) throws FileNotFoundException{
+
+		diretorio = "C:/Users/Raffa/Desktop/thiagobrito/enunciado e xmls/contents.xml";
+		String arquivo = new Scanner(new File(diretorio)).useDelimiter("\\Z").next();
+		
+		XStream xs = new XStream();
+		xs.alias("programa", Programa.class);
+		xs.alias("linha", Linha.class);
+		xs.alias("professor", Professor.class);
+		
+		Programa programa=(Programa) xs.fromXML(arquivo);
+		
+		/* imprime teste*/
+		System.out.println("-----------Linha-----------");
+		for(Linha l:programa.getLinha()){
+			System.out.println("Nome"+l.getNome());
+			System.out.println("--------Professores--------");
+			for(Professor prof:l.getProfessor()){
+				System.out.println("Código: "+prof.getCodigo());
+				System.out.println("Nome: "+prof.getNome());
+			}
+		}
+		/* imprime teste*/
+		
+		return programa;
+	}
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		
+
+	}
+
+}

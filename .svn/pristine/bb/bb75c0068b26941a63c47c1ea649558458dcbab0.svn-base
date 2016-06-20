@@ -1,0 +1,172 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("endereco-residencial")
+public class EnderecoResidencial {
+	
+	@XStreamAsAttribute
+	@XStreamAlias("CODIGO-INSTITUICAO-EMPRESA")
+	private String codigoInstituicaoEmpresa;
+	@XStreamAsAttribute
+	@XStreamAlias("NOME-INSTITUICAO-EMPRESA")
+	private String nomeInstituicaoEmpresa;
+	@XStreamAsAttribute
+	@XStreamAlias("CODIGO-ORGAO")
+	private String codOrgao;
+	@XStreamAsAttribute
+	@XStreamAlias("NOME-ORGAO")
+	private String nomeOrgao;
+	@XStreamAsAttribute
+	@XStreamAlias("CODIGO-UNIDADE")
+	private String codUnidade;
+	@XStreamAsAttribute
+	@XStreamAlias("NOME-UNIDADE")
+	private String nomeUnidade;
+	@XStreamAsAttribute
+	@XStreamAlias("LOGRADOURO-COMPLEMENTO")
+	private String logradouro;
+	@XStreamAsAttribute
+	@XStreamAlias("PAIS")
+	private String pais;
+	@XStreamAsAttribute
+	@XStreamAlias("UF")
+	private String uf;
+	@XStreamAsAttribute
+	@XStreamAlias("CEP")
+	private String cep;
+	@XStreamAsAttribute
+	@XStreamAlias("CIDADE")
+	private String cidade;
+	@XStreamAsAttribute
+	@XStreamAlias("BAIRRO")
+	private String bairro;
+	@XStreamAsAttribute
+	@XStreamAlias("DDD")
+	private String ddd;
+	@XStreamAsAttribute
+	@XStreamAlias("TELEFONE")
+	private String telefone;
+	@XStreamAsAttribute
+	@XStreamAlias("RAMAL")
+	private String ramal;
+	@XStreamAsAttribute
+	@XStreamAlias("FAX")
+	private String fax;
+	@XStreamAsAttribute
+	@XStreamAlias("CAIXA-POSTAL")
+	private String caixaPostal;
+	@XStreamAsAttribute
+	@XStreamAlias("HOME-PAGE")
+	private String homepage;
+	public String getCodigoInstituicaoEmpresa() {
+		return codigoInstituicaoEmpresa;
+	}
+	public void setCodigoInstituicaoEmpresa(String codigoInstituicaoEmpresa) {
+		this.codigoInstituicaoEmpresa = codigoInstituicaoEmpresa;
+	}
+	public String getNomeInstituicaoEmpresa() {
+		return nomeInstituicaoEmpresa;
+	}
+	public void setNomeInstituicaoEmpresa(String nomeInstituicaoEmpresa) {
+		this.nomeInstituicaoEmpresa = nomeInstituicaoEmpresa;
+	}
+	public String getCodOrgao() {
+		return codOrgao;
+	}
+	public void setCodOrgao(String codOrgao) {
+		this.codOrgao = codOrgao;
+	}
+	public String getNomeOrgao() {
+		return nomeOrgao;
+	}
+	public void setNomeOrgao(String nomeOrgao) {
+		this.nomeOrgao = nomeOrgao;
+	}
+	public String getCodUnidade() {
+		return codUnidade;
+	}
+	public void setCodUnidade(String codUnidade) {
+		this.codUnidade = codUnidade;
+	}
+	public String getNomeUnidade() {
+		return nomeUnidade;
+	}
+	public void setNomeUnidade(String nomeUnidade) {
+		this.nomeUnidade = nomeUnidade;
+	}
+	public String getLogradouro() {
+		return logradouro;
+	}
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
+	}
+	public String getPais() {
+		return pais;
+	}
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	public String getUf() {
+		return uf;
+	}
+	public void setUf(String uf) {
+		this.uf = uf;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
+	public String getDdd() {
+		return ddd;
+	}
+	public void setDdd(String ddd) {
+		this.ddd = ddd;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getRamal() {
+		return ramal;
+	}
+	public void setRamal(String ramal) {
+		this.ramal = ramal;
+	}
+	public String getFax() {
+		return fax;
+	}
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+	public String getCaixaPostal() {
+		return caixaPostal;
+	}
+	public void setCaixaPostal(String caixaPostal) {
+		this.caixaPostal = caixaPostal;
+	}
+	public String getHomepage() {
+		return homepage;
+	}
+	public void setHomepage(String homepage) {
+		this.homepage = homepage;
+	}
+
+}

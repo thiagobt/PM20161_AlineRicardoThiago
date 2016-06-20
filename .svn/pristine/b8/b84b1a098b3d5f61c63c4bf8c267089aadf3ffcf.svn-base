@@ -1,0 +1,30 @@
+package com.unirio.ppgi.xstream.main;
+
+import org.apache.commons.lang3.StringUtils;
+
+public class Inicia {
+
+	public static void main(String[] args) {
+		args[0] = "PPGI - UNIRIO";
+		args[3] = "2013";
+		args[2] = "2015";
+		String n1 ;
+		String n2;
+		String n3 ;
+
+		if (args.length > 0) {
+//			if (StringUtils.isNotBlank(args[0])) {
+//				n1 = args[0];
+//			}
+//			if (StringUtils.isNotBlank(n2)) {
+//				n2 = args[1];
+//			}
+//			if (StringUtils.isNotBlank(n3)) {
+//				n3 = args[2];
+//			}
+
+		}
+
+	}
+
+}

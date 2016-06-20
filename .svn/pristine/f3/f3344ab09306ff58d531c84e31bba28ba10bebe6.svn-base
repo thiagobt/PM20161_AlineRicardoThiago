@@ -1,0 +1,28 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("resumo-cv")
+public class ResumoCV {
+	
+	@XStreamAsAttribute
+	@XStreamAlias("texto-resumo-cv-rh")
+	private String textoResumoCvRh;
+	@XStreamAsAttribute
+	@XStreamAlias("texto-resumo-cv-rh-en")
+	private String textoResumoCvRhEn;
+	public String getTextoResumoCvRh() {
+		return textoResumoCvRh;
+	}
+	public void setTextoResumoCvRh(String textoResumoCvRh) {
+		this.textoResumoCvRh = textoResumoCvRh;
+	}
+	public String getTextoResumoCvRhEn() {
+		return textoResumoCvRhEn;
+	}
+	public void setTextoResumoCvRhEn(String textoResumoCvRhEn) {
+		this.textoResumoCvRhEn = textoResumoCvRhEn;
+	}
+	
+}

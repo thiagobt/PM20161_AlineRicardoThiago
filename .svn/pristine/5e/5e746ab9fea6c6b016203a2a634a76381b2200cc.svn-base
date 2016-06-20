@@ -1,0 +1,22 @@
+package com.unirio.ppgi.xstream.model;
+
+import java.util.List;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+@XStreamAlias("programa")  
+public class Programa {
+
+	
+	@XStreamImplicit(itemFieldName="linha")
+	private List<Linha> linhas;
+
+	public List<Linha> getLinha() {
+		return linhas;
+	}
+	public void setLinha(List<Linha> linha) {
+		this.linhas = linha;
+	}
+
+
+}

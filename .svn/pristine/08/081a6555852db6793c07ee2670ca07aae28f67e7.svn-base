@@ -1,0 +1,20 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+@XStreamAlias("endereco")
+public class Endereco {
+	
+	@XStreamImplicit(itemFieldName = "endereco-residencial")
+	private EnderecoResidencial enderecoResidencial;
+
+	public EnderecoResidencial getEnderecoResidencial() {
+		return enderecoResidencial;
+	}
+
+	public void setEnderecoResidencial(EnderecoResidencial enderecoResidencial) {
+		this.enderecoResidencial = enderecoResidencial;
+	}
+	
+}

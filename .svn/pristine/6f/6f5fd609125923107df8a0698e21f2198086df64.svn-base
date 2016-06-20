@@ -1,0 +1,16 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("ORIENTACAO-EM-ANDAMENTO-DE-GRADUACAO")
+public class OrientacoesEmAndamentoDeGraduacao {
+	
+	@XStreamOmitField
+	@XStreamAlias("DADOS-BASICOS-DA-ORIENTACAO-EM-ANDAMENTO-DE-GRADUACAO")
+	private String dadosBasicos;
+	@XStreamOmitField
+	@XStreamAlias("DETALHAMENTO-DA-ORIENTACAO-EM-ANDAMENTO-DE-GRADUACAO")
+	private String detalhamento;
+
+}

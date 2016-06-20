@@ -1,0 +1,217 @@
+package com.unirio.ppgi.xstream.helper;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileFilter;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Hours;
+import org.joda.time.Minutes;
+import org.joda.time.Seconds;
+
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.unirio.ppgi.xstream.constants.Constant;
+import com.unirio.ppgi.xstream.model.Curriculo;
+import com.unirio.ppgi.xstream.model.Programa;
+import com.unirio.ppgi.xstream.model.Programas;
+import com.unirio.ppgi.xstream.model.Qualis;
+
+public class Helper {
+
+	// private static Logger log = Logger.getLogger(Helper.class);
+
+	public static Programa obtemContents() {
+		String arquivo = lerArquivo(Constant.CONTENTS_XML_NOME);
+		if(StringUtils.isBlank(arquivo)){
+			 arquivo = lerUrl(Constant.CONTENTS_XML_NOME);
+		}
+		XStream xs = new XStream();
+		xs.processAnnotations(Programa.class);
+		Programa programa = (Programa) xs.fromXML(arquivo);
+
+		return programa;
+	}
+
+	public static Qualis obtemQualis() {
+		String arquivo = lerArquivo(Constant.QUALIS_XML_NOME);
+		if(StringUtils.isBlank(arquivo)){
+			 arquivo = lerUrl(Constant.QUALIS_XML_NOME);
+		}
+		XStream xs = new XStream();
+		xs.processAnnotations(Qualis.class);
+		Qualis qualis = (Qualis) xs.fromXML(arquivo);
+
+		return qualis;
+	}
+
+	public static Programas obtemProgramas() {
+		String arquivo = lerArquivo(Constant.PROGRAMAS_XML_NOME);
+		if(StringUtils.isBlank(arquivo)){
+			 arquivo = lerUrl(Constant.PROGRAMAS_XML_NOME);
+		}
+		XStream xs = new XStream();
+		xs.processAnnotations(Programas.class);
+		Programas programas = (Programas) xs.fromXML(arquivo);
+
+		return programas;
+	}
+
+	public static Curriculo obtemCurriculoVitae(String cod) {
+		String arquivo = "";
+		Curriculo curriculo = null;
+
+		descompactarArquivosZipCurriculo();
+		String path=Constant.CURRICULO_XML_NOME;
+		arquivo = lerArquivo(path);
+		if(StringUtils.isBlank(arquivo)){
+			String extensao=".zip";
+			System.out.println("Baixando arquivo zip da url: "+Constant.CONTENTS_CURRICULO_URL+cod + extensao);
+			gravaArquivoDeURL(Constant.CONTENTS_CURRICULO_URL+cod + extensao, Constant.DIRETORIO_LOCAL+cod+extensao);
+			System.out.println("Lendo arquivo baixado em: "+Constant.DIRETORIO_LOCAL+cod + "/" + path);
+			arquivo= lerArquivo(cod + "/" +path);
+		}
+
+		XStream xs = new XStream(new DomDriver());
+		xs.processAnnotations(Curriculo.class);
+//		if(!arquivo.contains("<ARTIGOS-PUBLICADOS>")){
+//		arquivo=arquivo.replace("<ARTIGOS-PUBLICADOS>", "<ARTIGOS-PUBLICADOS><ARTIGO-PUBLICADO></ARTIGO-PUBLICADO>");	
+//		}
+		curriculo = (Curriculo) xs.fromXML(arquivo);
+
+		return curriculo;
+	}
+
+	private static String lerArquivo(String path) {
+
+		String diretorio = Constant.DIRETORIO_LOCAL+ path;
+		String arquivo = "";
+
+		try {
+			FileReader arq = new FileReader(diretorio);
+			BufferedReader lerArq = new BufferedReader(arq);
+
+			String linha = lerArq.readLine();
+			while (linha != null) {
+				arquivo += linha;
+				linha = lerArq.readLine();
+			}
+			arq.close();
+		} catch (IOException e) {
+			System.out.println("Erro na abertura do arquivo no local: " + diretorio + "%s.\n");
+		}
+		return arquivo;
+	}
+
+	public static String lerUrl(String urlStpath) {
+
+		String urlSt = "";
+		String arquivo = "";
+		
+		if(urlStpath.equalsIgnoreCase(Constant.CONTENTS_XML_NOME)){
+			urlSt = Constant.CONTENTS_CURRICULO_URL + urlStpath;
+		}
+		if(urlStpath.equalsIgnoreCase(Constant.PROGRAMAS_XML_NOME)||urlStpath.equalsIgnoreCase(Constant.QUALIS_XML_NOME)){
+			urlSt = Constant.PROGRAMAS_QUALIS_URL + urlStpath;
+		}
+
+		System.out.println("Iniciando recuperação de arquivo pela url: " + urlSt);
+		/**proxy*/
+		Properties systemProperties = System.getProperties();
+		systemProperties.put("proxyHost", "proxy1.brasilcap.com.br");
+		systemProperties.put("proxyPort", "9090");
+		systemProperties.put("proxySet", "true");
+		/***/
+		try {
+			URL url = new URL(urlSt);
+			BufferedReader lerArq = new BufferedReader(new InputStreamReader(url.openStream()));
+			String linha = lerArq.readLine();
+			while (linha != null) {
+				arquivo += linha;
+				linha = lerArq.readLine();
+			}
+		} catch (IOException e) {
+			System.err.printf("Erro na abertura do arquivo pela url: %s.\n", e.getMessage());
+		}
+		return arquivo;
+	}
+
+	public static Map<String, String> obterParametrosEntrada(String[] args) {
+		Map<String, String> parametros = null;
+		if(args!=null){
+			if (args.length > 0) {
+				parametros = new HashMap<String, String>();
+				if (args.length > 0 && StringUtils.isNotBlank(args[0])) {
+					parametros.put(Constant.PROGRAMA, args[0]);
+				}
+				if (args.length > 1 && StringUtils.isNotBlank(args[1])) {
+					parametros.put(Constant.ANO_INICIO, args[1]);
+				}
+				if (args.length > 2 && StringUtils.isNotBlank(args[2])) {
+					parametros.put(Constant.ANO_FIM, args[2]);
+				}
+			}
+		}
+		return parametros;
+	}
+
+	public static void contadorTempo(DateTime inicio, DateTime fim) {
+		fim = new DateTime();
+		String segundos = Seconds.secondsBetween(inicio, fim).toString().replace("PT", "").replace("S", "");
+		String minutos = Minutes.minutesBetween(inicio, fim).toString().replace("PT", "").replace("M", "");
+		String horas = Hours.hoursBetween(inicio, fim).toString().replace("PT", "").replace("H", "");
+		System.out.println("Sistema executou e instrução em  " + horas + " hora(s), " + minutos + " minuto(s) e "
+				+ segundos + " segundo(s).\n");
+		System.out.println("Fim   : " + fim + "\n");
+	}
+
+	public static void descompactarArquivosZipCurriculo() {
+		final String extension = "zip";
+		Descompactador arquivador = new Descompactador();
+		File dir = new File(Constant.DIRETORIO_LOCAL);
+		FileFilter filter = null;
+		if (extension != null) {
+			filter = new FileFilter() {
+				public boolean accept(File pathname) {
+					return pathname.getAbsolutePath().endsWith(extension);
+				}
+			};
+		}
+		if (dir.exists()) {
+			for (File file : dir.listFiles(filter)) {
+				System.out.println(Constant.DIRETORIO_LOCAL + file.getName());
+				arquivador.descompacta(Constant.DIRETORIO_LOCAL + file.getName(),
+				Constant.DIRETORIO_LOCAL + file.getName().replace(".zip", ""));
+			}
+		}
+	}
+
+	public static void gravaArquivoDeURL(String stringUrl, String pathLocal) {
+		try {
+			URL url = new URL(stringUrl);
+			InputStream is = url.openStream();
+			new File(pathLocal.replace(".zip", "")).mkdirs();
+			FileOutputStream fos = new FileOutputStream(pathLocal);
+			int umByte = 0;
+			while ((umByte = is.read()) != -1){
+				fos.write(umByte);
+			}
+			is.close();
+			fos.close();
+			descompactarArquivosZipCurriculo();
+		} catch (Exception e) {
+			System.out.println("Erro ao baixar arquivo zip da url");
+		}
+	}
+	
+}

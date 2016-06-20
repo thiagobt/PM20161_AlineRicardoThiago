@@ -1,0 +1,39 @@
+package com.unirio.ppgi.xstream.model;
+
+import java.util.List;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("OUTRA-PRODUCAO")
+public class OutraProducao {
+	
+	@XStreamImplicit(itemFieldName = "ORIENTACOES-CONCLUIDAS")
+	private List<OrientacoesConcluidas> orientacoesConcluidas;
+	@XStreamOmitField
+	@XStreamAlias("INFORMACOES-ADICIONAIS")
+	private String info;
+	@XStreamOmitField
+	@XStreamAlias("PALAVRAS-CHAVE")
+	private String palavras;
+	@XStreamOmitField
+	@XStreamAlias("AREAS-DO-CONHECIMENTO")
+	private String areas;
+	@XStreamOmitField
+	@XStreamAlias("DEMAIS-TRABALHOS")
+	private String demais;
+	@XStreamOmitField
+	@XStreamAlias("PRODUCAO-ARTISTICA-CULTURAL")
+	private String producaoArtistica;
+
+	public List<OrientacoesConcluidas> getOrientacoesConcluidas() {
+		return orientacoesConcluidas;
+	}
+
+	public void setOrientacoesConcluidas(List<OrientacoesConcluidas> orientacoesConcluidas) {
+		this.orientacoesConcluidas = orientacoesConcluidas;
+	}
+
+
+}

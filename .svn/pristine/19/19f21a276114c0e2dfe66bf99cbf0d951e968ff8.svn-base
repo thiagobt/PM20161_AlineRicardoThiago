@@ -1,0 +1,22 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+
+@XStreamAlias("outras-informacoes-relevantes")
+public class OutrasInfoRelevantes {
+	
+	@XStreamAsAttribute
+	@XStreamAlias("outras-informacoes-relevantes")
+	private String outrasInfoRelevantes;
+
+	public String getOutrasInfoRelevantes() {
+		return outrasInfoRelevantes;
+	}
+
+	public void setOutrasInfoRelevantes(String outrasInfoRelevantes) {
+		this.outrasInfoRelevantes = outrasInfoRelevantes;
+	}
+	
+
+}

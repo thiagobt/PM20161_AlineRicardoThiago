@@ -1,0 +1,75 @@
+package com.unirio.ppgi.xstream.model;
+
+import java.util.List;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("ORIENTACOES-EM-ANDAMENTO")
+public class OrientacoesEmAndamento {
+
+	@XStreamImplicit(itemFieldName = "ORIENTACAO-EM-ANDAMENTO-DE-MESTRADO")
+	private List<OrientacoesEmAndamentoDeMestrado> orientacoesEmAndamentoDeMestrado;
+
+	@XStreamImplicit(itemFieldName = "ORIENTACAO-EM-ANDAMENTO-DE-DOUTORADO")
+	private List<OrientacoesEmAndamentoDeDoutorado> orientacoesEmAndamentoDeDoutorado;
+
+	@XStreamImplicit(itemFieldName = "ORIENTACAO-EM-ANDAMENTO-DE-GRADUACAO")
+	private List<OrientacoesEmAndamentoDeGraduacao> orientacoesEmAndamentoDeGraduacao;
+
+	@XStreamImplicit(itemFieldName = "OUTRAS-ORIENTACOES-EM-ANDAMENTO")
+	private List<OutrasOrientacoesEmAndamento> outrasOrientacoesEmAndamento;
+
+	@XStreamOmitField
+	@XStreamAlias("ORIENTACAO-EM-ANDAMENTO-DE-APERFEICOAMENTO-ESPECIALIZACAO")
+	private String orientacoesEmAndamentoDeAperfeicoamento;
+
+	@XStreamOmitField
+	@XStreamAlias("ORIENTACAO-EM-ANDAMENTO-DE-POS-DOUTORADO")
+	private String orientacoesEmAndamentoPosDoutorado;
+
+	@XStreamOmitField
+	@XStreamAlias("ORIENTACAO-EM-ANDAMENTO-DE-INICIACAO-CIENTIFICA")
+	private String orientacoesEmAndamentoDeIniciacaoCientifica;
+
+	@XStreamOmitField
+	@XStreamAlias("AREAS-DO-CONHECIMENTO")
+	private String areasConhecimento;
+
+	public List<OrientacoesEmAndamentoDeMestrado> getOrientacoesEmAndamentoDeMestrado() {
+		return orientacoesEmAndamentoDeMestrado;
+	}
+
+	public void setOrientacoesEmAndamentoDeMestrado(
+			List<OrientacoesEmAndamentoDeMestrado> orientacoesEmAndamentoDeMestrado) {
+		this.orientacoesEmAndamentoDeMestrado = orientacoesEmAndamentoDeMestrado;
+	}
+
+	public List<OrientacoesEmAndamentoDeDoutorado> getOrientacoesEmAndamentoDeDoutorado() {
+		return orientacoesEmAndamentoDeDoutorado;
+	}
+
+	public void setOrientacoesEmAndamentoDeDoutorado(
+			List<OrientacoesEmAndamentoDeDoutorado> orientacoesEmAndamentoDeDoutorado) {
+		this.orientacoesEmAndamentoDeDoutorado = orientacoesEmAndamentoDeDoutorado;
+	}
+
+	public List<OrientacoesEmAndamentoDeGraduacao> getOrientacoesEmAndamentoDeGraduacao() {
+		return orientacoesEmAndamentoDeGraduacao;
+	}
+
+	public void setOrientacoesEmAndamentoDeGraduacao(
+			List<OrientacoesEmAndamentoDeGraduacao> orientacoesEmAndamentoDeGraduacao) {
+		this.orientacoesEmAndamentoDeGraduacao = orientacoesEmAndamentoDeGraduacao;
+	}
+
+	public List<OutrasOrientacoesEmAndamento> getOutrasOrientacoesEmAndamento() {
+		return outrasOrientacoesEmAndamento;
+	}
+
+	public void setOutrasOrientacoesEmAndamento(List<OutrasOrientacoesEmAndamento> outrasOrientacoesEmAndamento) {
+		this.outrasOrientacoesEmAndamento = outrasOrientacoesEmAndamento;
+	}
+
+}

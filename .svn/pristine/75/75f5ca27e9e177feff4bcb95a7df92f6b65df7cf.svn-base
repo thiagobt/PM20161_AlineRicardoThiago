@@ -1,0 +1,31 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("PARTICIPACAO-EM-BANCA-DE-DOUTORADO")
+public class PartBancaDoutorado {
+
+	@XStreamOmitField
+	@XStreamAlias("DADOS-BASICOS-DA-PARTICIPACAO-EM-BANCA-DE-DOUTORADO")
+	private String dadosBasicosOrientacoes;
+	@XStreamOmitField
+	@XStreamAlias("DETALHAMENTO-DA-PARTICIPACAO-EM-BANCA-DE-DOUTORADO")
+	private String detalhamento;
+	@XStreamOmitField
+	@XStreamAlias("INFORMACOES-ADICIONAIS")
+	private String info;
+	@XStreamOmitField
+	@XStreamAlias("PALAVRAS-CHAVE")
+	private String palavras;
+	@XStreamOmitField
+	@XStreamAlias("AREAS-DO-CONHECIMENTO")
+	private String areas;
+	@XStreamOmitField
+	@XStreamAlias("SETORES-DE-ATIVIDADE")
+	private String setores;
+	@XStreamOmitField
+	@XStreamAlias("PARTICIPANTE-BANCA")
+	private String participante;
+
+}

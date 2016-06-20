@@ -1,0 +1,27 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+@XStreamAlias("curriculo-vitae")
+public class CurriculumVitae {
+	
+	@XStreamAsAttribute
+	@XStreamAlias("sistema-origem-xml")
+	private String sistemaOrigemXml;
+	@XStreamAsAttribute
+	@XStreamAlias("numero-identificador")
+	private String numeroIdentificador;
+	@XStreamAsAttribute
+	@XStreamAlias("data-atualizacao")
+	private String dataAtualizacao;
+	@XStreamAsAttribute
+	@XStreamAlias("hora-atualizacao")
+	private String horaAtualizacao;
+	
+	@XStreamImplicit(itemFieldName = "dados-gerais")
+	private DadosGerais dadosGerais;
+	
+
+}

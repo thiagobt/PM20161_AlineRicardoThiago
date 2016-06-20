@@ -1,0 +1,53 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+@XStreamAlias("dados-gerais")
+public class DadosGerais {
+	
+	@XStreamAsAttribute
+	@XStreamAlias("nome-completo")
+	private String nomeCompleto;
+	@XStreamAsAttribute
+	@XStreamAlias("nome-em-citacoes-bibliograficas")
+	private String nomeCitacoesBibliograficas;
+	@XStreamAsAttribute
+	@XStreamAlias("nacionalidade")
+	private String nacionalidade;
+	@XStreamAsAttribute
+	@XStreamAlias("pais-de-nascimento")
+	private String paisNascimento;
+	@XStreamAsAttribute
+	@XStreamAlias("uf-nascimento")
+	private String ufNascimento;
+	@XStreamAsAttribute
+	@XStreamAlias("cidade-nascimento")
+	private String cidadeNascimento;
+	@XStreamAsAttribute
+	@XStreamAlias("permissao-de-divulgacao")
+	private String permissaoDivulgacao;
+	@XStreamAsAttribute
+	@XStreamAlias("data-falecimento")
+	private String dataFalecimento;
+	@XStreamAsAttribute
+	@XStreamAlias("sigla-pais-nacionalidade")
+	private String siglaPaisNacionalidade;
+	@XStreamAsAttribute
+	@XStreamAlias("pais-de-nacionalidade")
+	private String paisNacionalidade;
+	
+	@XStreamImplicit(itemFieldName = "resumo-cv")
+	private ResumoCV resumoCv;
+	
+	@XStreamImplicit(itemFieldName = "outras-informacoes-relevantes")
+	private OutrasInfoRelevantes outrasInfoRelevantes;
+	
+	@XStreamImplicit(itemFieldName = "endereco")
+	private Endereco endereco;
+	
+	@XStreamImplicit(itemFieldName = "FORMACAO-ACADEMICA-TITULACAO")
+	private FormacaoAcademicaTitulacao formacaoAcademicaTitulacao;
+
+}

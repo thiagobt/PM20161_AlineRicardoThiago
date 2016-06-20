@@ -1,0 +1,35 @@
+package com.unirio.ppgi.xstream.main;
+
+import java.util.Map;
+
+import com.unirio.ppgi.xstream.helper.Helper;
+import com.unirio.ppgi.xstream.service.Service;
+
+public class Inicia {
+
+	public static void main(String[] args) {
+		/* atributos esperados */
+		args = new String[3];
+		args[0] = "PPGI-UNIRIO";
+//		args[1] = "2013";
+//		args[2] = "2015";
+		/* ./atributos */
+
+		 Map<String, String> params = Helper.obterParametrosEntrada(args);
+
+		/* teste exibe */
+		// System.out.println(params.get(Constant.PROGRAMA));
+		// System.out.println(params.get(Constant.ANO_INICIO));
+		// System.out.println(params.get(Constant.ANO_FIM));
+		/* ./teste exibe */
+
+		Service.executaLeituraGravacao(params);
+		
+
+
+	}
+
+
+	
+
+}

@@ -1,0 +1,180 @@
+package com.unirio.ppgi.xstream.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import org.joda.time.DateTime;
+
+import com.unirio.ppgi.xstream.constants.Constant;
+import com.unirio.ppgi.xstream.dto.RegistroDTO;
+import com.unirio.ppgi.xstream.helper.Helper;
+import com.unirio.ppgi.xstream.model.ArtigoPublicado;
+import com.unirio.ppgi.xstream.model.ArtigosPublicados;
+import com.unirio.ppgi.xstream.model.Curriculo;
+import com.unirio.ppgi.xstream.model.DadosBasicosArtigo;
+import com.unirio.ppgi.xstream.model.DadosBasicosTrabalho;
+import com.unirio.ppgi.xstream.model.DadosComplementares;
+import com.unirio.ppgi.xstream.model.Entry;
+import com.unirio.ppgi.xstream.model.Linha;
+import com.unirio.ppgi.xstream.model.OutraProducao;
+import com.unirio.ppgi.xstream.model.ProducaoBibliografica;
+import com.unirio.ppgi.xstream.model.Professor;
+import com.unirio.ppgi.xstream.model.Programa;
+import com.unirio.ppgi.xstream.model.Programas;
+import com.unirio.ppgi.xstream.model.Qualis;
+import com.unirio.ppgi.xstream.model.TrabalhoEventos;
+import com.unirio.ppgi.xstream.model.TrabalhosEventos;
+
+public class Service {
+
+	private static DateTime inicio;
+	private static DateTime fim;
+	private static List<RegistroDTO> registros;
+	private static RegistroDTO registro;
+	private static Curriculo curriculo = new Curriculo();
+	private static Qualis qualis = new Qualis();
+	private static Programa programa;
+	private static Programas programas;
+	private static Map<String, String> parametros;
+
+	public static void executaLeituraGravacao(Map<String, String> params) {
+		parametros=params;
+		inicio = new DateTime();
+		System.out.println("In�cio: " + inicio + "\n");
+		registros = obterRegistros();
+
+		gerarArquivoTxt(registros);
+	}
+
+	public static List<RegistroDTO> obterRegistros() {
+		obterUnMarShalXml();
+		return registros;
+	}
+
+	public static void obterUnMarShalXml() {
+		registros= new ArrayList<RegistroDTO>();
+		curriculo = new Curriculo();
+		qualis = new Qualis();
+		programa = new Programa();
+		programas= new Programas();
+
+		programas=Helper.obtemProgramas();
+		System.out.println("Programa informado: "+parametros.get(Constant.PROGRAMA)+"\n");
+		if(programas.getPrograma().get(0).getNome().equalsIgnoreCase(parametros.get(Constant.PROGRAMA))){
+			Helper.descompactarArquivosZipCurriculo();
+			programa = Helper.obtemContents();
+			for (Linha linha : programa.getLinha()) {
+				for (Professor professor : linha.getProfessor()) {
+					registro = new RegistroDTO();
+					registro.setNomeLinha(linha.getNome());
+					registro.setTotalLinhaPesquisa(linha.getProfessor().size());
+					registro.setNomeProfessor(professor.getNome());
+					curriculo = Helper.obtemCurriculoVitae(professor.getCodigo());
+					qualis = Helper.obtemQualis();
+					for (ProducaoBibliografica prod : curriculo.getProducaoBibliografica()) {
+						for (ArtigosPublicados arts : prod.getArtigosPublicados()) {
+							for (ArtigoPublicado art : arts.getArtigoPublicado()) {
+								for (DadosBasicosArtigo da : art.getDadosBasicosArtigo()) {
+									for (Entry e : qualis.getEntry()) {
+										if (e.getRegex().equalsIgnoreCase(da.getTituloArtigo().toLowerCase())) {
+											switch (e.getClassificacao()) {
+											case "A1":
+												registro.setNumeroArtigoEmRevistaA1(registro.getNumeroArtigoEmRevistaA1()+1);
+												break;
+											case "A2":
+												registro.setNumeroArtigoEmRevistaA2(registro.getNumeroArtigoEmRevistaA2()+1);
+												break;
+											case "B1":
+												registro.setNumeroArtigoEmRevistaB1(registro.getNumeroArtigoEmRevistaB1()+1);
+												break;
+											case "B2":
+												registro.setNumeroArtigoEmRevistaB2(registro.getNumeroArtigoEmRevistaB2()+1);
+												break;
+											case "B3":
+												registro.setNumeroArtigoEmRevistaB3(registro.getNumeroArtigoEmRevistaB3()+1);
+												break;
+											case "B4":
+												registro.setNumeroArtigoEmRevistaB4(registro.getNumeroArtigoEmRevistaB4()+1);
+												break;
+											case "C":
+												registro.setNumeroArtigoEmRevistaC(registro.getNumeroArtigoEmRevistaC()+1);
+												break;
+											case "NC":
+												registro.setNumeroArtigoEmRevistaNC(registro.getNumeroArtigoEmRevistaNC()+1);
+												break;
+											default:
+												System.out.println("N�o foi encontrada classifica��o pro artigo de revista: "+da.getTituloArtigo());
+											}
+										}
+									}
+								}
+							}
+						}
+						for (TrabalhosEventos trabsevs : prod.getTrabEventos()) {
+							for (TrabalhoEventos trabsev : trabsevs.getTrabEventos()) {
+								for (DadosBasicosTrabalho dt : trabsev.getDadosBasicosTrabalho()) {
+									for (Entry e : qualis.getEntry()) {
+										if (e.getRegex().equalsIgnoreCase(dt.getTituloTrabalho().toLowerCase())) {
+											switch (e.getClassificacao()) {
+											case "A1":
+												registro.setNumeroArtigoEmEventosA1(registro.getNumeroArtigoEmEventosA1()+1);
+												break;
+											case "A2":
+												registro.setNumeroArtigoEmEventosA2(registro.getNumeroArtigoEmEventosA2()+1);
+												break;
+											case "B1":
+												registro.setNumeroArtigoEmEventosB1(registro.getNumeroArtigoEmEventosB1()+1);
+												break;
+											case "B2":
+												registro.setNumeroArtigoEmEventosB2(registro.getNumeroArtigoEmEventosB2()+1);
+												break;
+											case "B3":
+												registro.setNumeroArtigoEmEventosB3(registro.getNumeroArtigoEmEventosB3()+1);
+												break;
+											case "B4":
+												registro.setNumeroArtigoEmEventosB4(registro.getNumeroArtigoEmEventosB4()+1);
+												break;
+											case "C":
+												registro.setNumeroArtigoEmEventosC(registro.getNumeroArtigoEmEventosC()+1);
+												break;
+											case "NC":
+												registro.setNumeroArtigoEmEventosNC(registro.getNumeroArtigoEmEventosNC()+1);
+												break;
+											default:
+												System.out.println("N�o foi encontrada classifica��o pro artigo de evento: "+dt.getTituloTrabalho());
+											}
+										}
+									}
+									
+								}
+							}
+						}
+	
+					}
+					for(DadosComplementares dados:curriculo.getDadosComplementares()){
+						//	Orientações em andamento
+						//	participação em bancas
+					}
+					for(OutraProducao prod:curriculo.getOutraProd()){
+						//	Orientações concluídas
+					}
+					registros.add(registro);
+				}
+			}
+			System.out.println("Iniciando gravação de dados:\n");
+			for(RegistroDTO reg:registros){
+				System.out.println(reg.toString());
+			}
+		}else{
+			System.out.println("N�o existe programa com o nome informado >>"+ parametros.get(Constant.PROGRAMA));
+		}
+
+	}
+
+	public static void gerarArquivoTxt(List<RegistroDTO> registros) {
+
+		Helper.contadorTempo(inicio, fim);
+	}
+
+}

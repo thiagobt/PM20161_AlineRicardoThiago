@@ -1,0 +1,30 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
+@XStreamAlias("ORIENTACAO-CONCLUIDAS-PARA-INICIACAO-CIENTIFICA")
+public class OrientacoesConcluidasDeIniciacaoCientifica {
+	
+	
+	@XStreamOmitField
+	@XStreamAlias("DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-INICIACAO-CIENTIFICA")
+	private String dadosBasicosOrientacoes;
+
+	@XStreamOmitField
+	@XStreamAlias("DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-INICIACAO-CIENTIFICA")
+	private String detalhamento;
+	@XStreamOmitField
+	@XStreamAlias("INFORMACOES-ADICIONAIS")
+	private String info;
+	@XStreamOmitField
+	@XStreamAlias("PALAVRAS-CHAVE")
+	private String palavras;
+	@XStreamOmitField
+	@XStreamAlias("AREAS-DO-CONHECIMENTO")
+	private String areas;
+	@XStreamOmitField
+	@XStreamAlias("SETORES-DE-ATIVIDADE")
+	private String setores;
+
+}

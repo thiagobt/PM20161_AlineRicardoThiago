@@ -1,0 +1,14 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
+
+@XStreamAlias("FORMACAO-ACADEMICA-TITULACAO")
+public class FormacaoAcademicaTitulacao {
+	
+	@XStreamImplicit(itemFieldName = "GRADUACAO")
+	private Graduacao graducao;
+	
+	
+
+}

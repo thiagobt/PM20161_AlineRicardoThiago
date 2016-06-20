@@ -1,0 +1,291 @@
+package com.unirio.ppgi.xstream.dto;
+
+public class RegistroDTO {
+
+	private String nomeLinha;
+	private String nomeProfessor;
+
+	private int totalLinhaPesquisa;
+
+	private String numeroArtigoEmRevistaA1;
+	private String numeroArtigoEmRevistaA2;
+	private String numeroArtigoEmRevistaB1;
+	private String numeroArtigoEmRevistaB2;
+	private String numeroArtigoEmRevistaB3;
+	private String numeroArtigoEmRevistaB4;
+	private String numeroArtigoEmRevistaC;
+	private String numeroArtigoEmRevistaNC;
+
+	private String numeroArtigoEmEventosA1;
+	private String numeroArtigoEmEventosA2;
+	private String numeroArtigoEmEventosB1;
+	private String numeroArtigoEmEventosB2;
+	private String numeroArtigoEmEventosB3;
+	private String numeroArtigoEmEventosB4;
+	private String numeroArtigoEmEventosC;
+	private String numeroArtigoEmEventosNC;
+
+	private String numeroParticipacoesBancasDoutorado;
+	private String numeroParticipacoesBancasMestrado;
+	private String numeroParticipacoesBancasGraduacao;
+
+	private String numeroOrientacoesBancasDoutoradoConcluidas;
+	private String numeroOrientacoesBancasMestradoConcluidas;
+	private String numeroOrientacoesBancasGraduacaoConcluidas;
+
+	private String numeroOrientacoesBancasDoutoradoEmAndamento;
+	private String numeroOrientacoesBancasMestradoEmAndamento;
+	private String numeroOrientacoesBancasGraduacaoEmAndamento;
+
+	public String getNomeLinha() {
+		return nomeLinha;
+	}
+
+	public void setNomeLinha(String nomeLinha) {
+		this.nomeLinha = nomeLinha;
+	}
+
+	public String getNomeProfessor() {
+		return nomeProfessor;
+	}
+
+	public void setNomeProfessor(String nomeProfessor) {
+		this.nomeProfessor = nomeProfessor;
+	}
+
+	public int getTotalLinhaPesquisa() {
+		return totalLinhaPesquisa;
+	}
+
+	public void setTotalLinhaPesquisa(int totalLinhaPesquisa) {
+		this.totalLinhaPesquisa = totalLinhaPesquisa;
+	}
+
+	public String getNumeroArtigoEmRevistaA1() {
+		return numeroArtigoEmRevistaA1;
+	}
+
+	public void setNumeroArtigoEmRevistaA1(String numeroArtigoEmRevistaA1) {
+		this.numeroArtigoEmRevistaA1 = numeroArtigoEmRevistaA1;
+	}
+
+	public String getNumeroArtigoEmRevistaA2() {
+		return numeroArtigoEmRevistaA2;
+	}
+
+	public void setNumeroArtigoEmRevistaA2(String numeroArtigoEmRevistaA2) {
+		this.numeroArtigoEmRevistaA2 = numeroArtigoEmRevistaA2;
+	}
+
+	public String getNumeroArtigoEmRevistaB1() {
+		return numeroArtigoEmRevistaB1;
+	}
+
+	public void setNumeroArtigoEmRevistaB1(String numeroArtigoEmRevistaB1) {
+		this.numeroArtigoEmRevistaB1 = numeroArtigoEmRevistaB1;
+	}
+
+	public String getNumeroArtigoEmRevistaB2() {
+		return numeroArtigoEmRevistaB2;
+	}
+
+	public void setNumeroArtigoEmRevistaB2(String numeroArtigoEmRevistaB2) {
+		this.numeroArtigoEmRevistaB2 = numeroArtigoEmRevistaB2;
+	}
+
+	public String getNumeroArtigoEmRevistaB3() {
+		return numeroArtigoEmRevistaB3;
+	}
+
+	public void setNumeroArtigoEmRevistaB3(String numeroArtigoEmRevistaB3) {
+		this.numeroArtigoEmRevistaB3 = numeroArtigoEmRevistaB3;
+	}
+
+	public String getNumeroArtigoEmRevistaB4() {
+		return numeroArtigoEmRevistaB4;
+	}
+
+	public void setNumeroArtigoEmRevistaB4(String numeroArtigoEmRevistaB4) {
+		this.numeroArtigoEmRevistaB4 = numeroArtigoEmRevistaB4;
+	}
+
+	public String getNumeroArtigoEmRevistaC() {
+		return numeroArtigoEmRevistaC;
+	}
+
+	public void setNumeroArtigoEmRevistaC(String numeroArtigoEmRevistaC) {
+		this.numeroArtigoEmRevistaC = numeroArtigoEmRevistaC;
+	}
+
+	public String getNumeroArtigoEmRevistaNC() {
+		return numeroArtigoEmRevistaNC;
+	}
+
+	public void setNumeroArtigoEmRevistaNC(String numeroArtigoEmRevistaNC) {
+		this.numeroArtigoEmRevistaNC = numeroArtigoEmRevistaNC;
+	}
+
+	public String getNumeroArtigoEmEventosA1() {
+		return numeroArtigoEmEventosA1;
+	}
+
+	public void setNumeroArtigoEmEventosA1(String numeroArtigoEmEventosA1) {
+		this.numeroArtigoEmEventosA1 = numeroArtigoEmEventosA1;
+	}
+
+	public String getNumeroArtigoEmEventosA2() {
+		return numeroArtigoEmEventosA2;
+	}
+
+	public void setNumeroArtigoEmEventosA2(String numeroArtigoEmEventosA2) {
+		this.numeroArtigoEmEventosA2 = numeroArtigoEmEventosA2;
+	}
+
+	public String getNumeroArtigoEmEventosB1() {
+		return numeroArtigoEmEventosB1;
+	}
+
+	public void setNumeroArtigoEmEventosB1(String numeroArtigoEmEventosB1) {
+		this.numeroArtigoEmEventosB1 = numeroArtigoEmEventosB1;
+	}
+
+	public String getNumeroArtigoEmEventosB2() {
+		return numeroArtigoEmEventosB2;
+	}
+
+	public void setNumeroArtigoEmEventosB2(String numeroArtigoEmEventosB2) {
+		this.numeroArtigoEmEventosB2 = numeroArtigoEmEventosB2;
+	}
+
+	public String getNumeroArtigoEmEventosB3() {
+		return numeroArtigoEmEventosB3;
+	}
+
+	public void setNumeroArtigoEmEventosB3(String numeroArtigoEmEventosB3) {
+		this.numeroArtigoEmEventosB3 = numeroArtigoEmEventosB3;
+	}
+
+	public String getNumeroArtigoEmEventosB4() {
+		return numeroArtigoEmEventosB4;
+	}
+
+	public void setNumeroArtigoEmEventosB4(String numeroArtigoEmEventosB4) {
+		this.numeroArtigoEmEventosB4 = numeroArtigoEmEventosB4;
+	}
+
+	public String getNumeroArtigoEmEventosC() {
+		return numeroArtigoEmEventosC;
+	}
+
+	public void setNumeroArtigoEmEventosC(String numeroArtigoEmEventosC) {
+		this.numeroArtigoEmEventosC = numeroArtigoEmEventosC;
+	}
+
+	public String getNumeroArtigoEmEventosNC() {
+		return numeroArtigoEmEventosNC;
+	}
+
+	public void setNumeroArtigoEmEventosNC(String numeroArtigoEmEventosNC) {
+		this.numeroArtigoEmEventosNC = numeroArtigoEmEventosNC;
+	}
+
+	public String getNumeroParticipacoesBancasDoutorado() {
+		return numeroParticipacoesBancasDoutorado;
+	}
+
+	public void setNumeroParticipacoesBancasDoutorado(String numeroParticipacoesBancasDoutorado) {
+		this.numeroParticipacoesBancasDoutorado = numeroParticipacoesBancasDoutorado;
+	}
+
+	public String getNumeroParticipacoesBancasMestrado() {
+		return numeroParticipacoesBancasMestrado;
+	}
+
+	public void setNumeroParticipacoesBancasMestrado(String numeroParticipacoesBancasMestrado) {
+		this.numeroParticipacoesBancasMestrado = numeroParticipacoesBancasMestrado;
+	}
+
+	public String getNumeroParticipacoesBancasGraduacao() {
+		return numeroParticipacoesBancasGraduacao;
+	}
+
+	public void setNumeroParticipacoesBancasGraduacao(String numeroParticipacoesBancasGraduacao) {
+		this.numeroParticipacoesBancasGraduacao = numeroParticipacoesBancasGraduacao;
+	}
+
+	public String getNumeroOrientacoesBancasDoutoradoConcluidas() {
+		return numeroOrientacoesBancasDoutoradoConcluidas;
+	}
+
+	public void setNumeroOrientacoesBancasDoutoradoConcluidas(String numeroOrientacoesBancasDoutoradoConcluidas) {
+		this.numeroOrientacoesBancasDoutoradoConcluidas = numeroOrientacoesBancasDoutoradoConcluidas;
+	}
+
+	public String getNumeroOrientacoesBancasMestradoConcluidas() {
+		return numeroOrientacoesBancasMestradoConcluidas;
+	}
+
+	public void setNumeroOrientacoesBancasMestradoConcluidas(String numeroOrientacoesBancasMestradoConcluidas) {
+		this.numeroOrientacoesBancasMestradoConcluidas = numeroOrientacoesBancasMestradoConcluidas;
+	}
+
+	public String getNumeroOrientacoesBancasGraduacaoConcluidas() {
+		return numeroOrientacoesBancasGraduacaoConcluidas;
+	}
+
+	public void setNumeroOrientacoesBancasGraduacaoConcluidas(String numeroOrientacoesBancasGraduacaoConcluidas) {
+		this.numeroOrientacoesBancasGraduacaoConcluidas = numeroOrientacoesBancasGraduacaoConcluidas;
+	}
+
+	public String getNumeroOrientacoesBancasDoutoradoEmAndamento() {
+		return numeroOrientacoesBancasDoutoradoEmAndamento;
+	}
+
+	public void setNumeroOrientacoesBancasDoutoradoEmAndamento(String numeroOrientacoesBancasDoutoradoEmAndamento) {
+		this.numeroOrientacoesBancasDoutoradoEmAndamento = numeroOrientacoesBancasDoutoradoEmAndamento;
+	}
+
+	public String getNumeroOrientacoesBancasMestradoEmAndamento() {
+		return numeroOrientacoesBancasMestradoEmAndamento;
+	}
+
+	public void setNumeroOrientacoesBancasMestradoEmAndamento(String numeroOrientacoesBancasMestradoEmAndamento) {
+		this.numeroOrientacoesBancasMestradoEmAndamento = numeroOrientacoesBancasMestradoEmAndamento;
+	}
+
+	public String getNumeroOrientacoesBancasGraduacaoEmAndamento() {
+		return numeroOrientacoesBancasGraduacaoEmAndamento;
+	}
+
+	public void setNumeroOrientacoesBancasGraduacaoEmAndamento(String numeroOrientacoesBancasGraduacaoEmAndamento) {
+		this.numeroOrientacoesBancasGraduacaoEmAndamento = numeroOrientacoesBancasGraduacaoEmAndamento;
+	}
+
+	@Override
+	public String toString() {
+		return "RegistroDTO [nomeLinha=" + nomeLinha + ", nomeProfessor=" + nomeProfessor + ", totalLinhaPesquisa="
+				+ totalLinhaPesquisa + ", numeroArtigoEmRevistaA1=" + numeroArtigoEmRevistaA1
+				+ ", numeroArtigoEmRevistaA2=" + numeroArtigoEmRevistaA2 + ", numeroArtigoEmRevistaB1="
+				+ numeroArtigoEmRevistaB1 + ", numeroArtigoEmRevistaB2=" + numeroArtigoEmRevistaB2
+				+ ", numeroArtigoEmRevistaB3=" + numeroArtigoEmRevistaB3 + ", numeroArtigoEmRevistaB4="
+				+ numeroArtigoEmRevistaB4 + ", numeroArtigoEmRevistaC=" + numeroArtigoEmRevistaC
+				+ ", numeroArtigoEmRevistaNC=" + numeroArtigoEmRevistaNC + ", numeroArtigoEmEventosA1="
+				+ numeroArtigoEmEventosA1 + ", numeroArtigoEmEventosA2=" + numeroArtigoEmEventosA2
+				+ ", numeroArtigoEmEventosB1=" + numeroArtigoEmEventosB1 + ", numeroArtigoEmEventosB2="
+				+ numeroArtigoEmEventosB2 + ", numeroArtigoEmEventosB3=" + numeroArtigoEmEventosB3
+				+ ", numeroArtigoEmEventosB4=" + numeroArtigoEmEventosB4 + ", numeroArtigoEmEventosC="
+				+ numeroArtigoEmEventosC + ", numeroArtigoEmEventosNC=" + numeroArtigoEmEventosNC
+				+ ", numeroParticipacoesBancasDoutorado=" + numeroParticipacoesBancasDoutorado
+				+ ", numeroParticipacoesBancasMestrado=" + numeroParticipacoesBancasMestrado
+				+ ", numeroParticipacoesBancasGraduacao=" + numeroParticipacoesBancasGraduacao
+				+ ", numeroOrientacoesBancasDoutoradoConcluidas=" + numeroOrientacoesBancasDoutoradoConcluidas
+				+ ", numeroOrientacoesBancasMestradoConcluidas=" + numeroOrientacoesBancasMestradoConcluidas
+				+ ", numeroOrientacoesBancasGraduacaoConcluidas=" + numeroOrientacoesBancasGraduacaoConcluidas
+				+ ", numeroOrientacoesBancasDoutoradoEmAndamento=" + numeroOrientacoesBancasDoutoradoEmAndamento
+				+ ", numeroOrientacoesBancasMestradoEmAndamento=" + numeroOrientacoesBancasMestradoEmAndamento
+				+ ", numeroOrientacoesBancasGraduacaoEmAndamento=" + numeroOrientacoesBancasGraduacaoEmAndamento + "]";
+	}
+	
+	
+
+}

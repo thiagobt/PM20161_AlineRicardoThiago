@@ -1,0 +1,8 @@
+package com.unirio.ppgi.xstream.model;
+
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("PARTICIPACAO-EM-BANCA-DE-DOUTORADO")
+public class PartBancaDoutorado {
+
+}
